@@ -2,366 +2,325 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>혼야키 특별 생일 코스 (本焼き)</title>
-    <!-- 고급스러운 서체 적용 (Google Fonts - Noto Serif KR & Playfair Display) -->
+    <!-- 모바일 화면 비율 및 줌 고정 (모바일 웹 앱 최적화) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday - Private Dinner Table</title>
+    
+    <!-- 세련된 다이닝 무드를 위한 구글 프리미엄 웹 폰트 내장 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
     <style>
+        /* 화사하고 따뜻한 파스텔 크림 & 소프트 로즈 골드 테마 */
         :root {
-            --bg-color: #0d0d0d;
-            --container-bg: #141414;
-            --accent-gold: #c5a880;
-            --accent-muted: #8a7b66;
-            --text-light: #e6e1da;
-            --text-dark: #a6a097;
-            --text-white: #ffffff;
+            --bg-color: #fdfbf7;         /* 따뜻한 아이보리 크림 빛 배경 */
+            --card-bg: #ffffff;         /* 순백색 컨텐츠 카드 */
+            --accent-gold: #c3a275;     /* 은은한 샴페인 골드 */
+            --accent-rose: #d4a396;     /* 로맨틱한 소프트 로즈 */
+            --text-main: #3a3530;       /* 부드럽고 가독성 높은 웜 브라운 */
+            --text-muted: #8c8275;      /* 감성적인 브라운 그레이 */
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent; /* 모바일 터치 잔상 제거 */
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-light);
+            color: var(--text-main);
             font-family: 'Playfair Display', 'Noto Serif KR', serif;
-            overflow-x: hidden;
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-x: hidden;
         }
 
-        /* 1. 첫 화면: 전체 화면 생일 축하 인트로 레이어 */
+        /* 1. 첫 화면: 전체 화면 생일 축하 오버레이 (밝은 무드) */
         #birthday-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #090909;
+            background-color: var(--bg-color);
             z-index: 999;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
-            transition: opacity 1s ease, transform 1s ease;
+            padding: 24px;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .overlay-border {
-            border: 1px solid var(--accent-gold);
-            padding: 60px 30px;
-            max-width: 500px;
+        .overlay-card {
+            background: var(--card-bg);
+            border: 1px solid #f0e6d6;
+            box-shadow: 0 10px 30px rgba(195, 162, 117, 0.06);
+            padding: 50px 24px;
+            max-width: 400px;
             width: 100%;
-            position: relative;
+            border-radius: 16px;
         }
 
-        .overlay-border::before {
-            content: '';
-            position: absolute;
-            top: 5px; left: 5px; right: 5px; bottom: 5px;
-            border: 2px solid var(--accent-gold);
-            pointer-events: none;
-        }
-
-        .lantern-anim {
+        .celebration-icon {
             font-size: 32pt;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
+            margin-bottom: 16px;
+            display: block;
+            animation: heartBeat 2s ease infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
         }
 
-        .hbd-title {
-            font-size: 26pt;
-            font-weight: 700;
-            letter-spacing: 5px;
-            color: var(--text-white);
-            margin-bottom: 10px;
-        }
-
-        .hbd-subtitle {
-            font-size: 12pt;
-            color: var(--accent-gold);
+        .hbd-main-title {
+            font-size: 24pt;
+            font-weight: 600;
             letter-spacing: 3px;
-            margin-bottom: 40px;
-            font-style: italic;
+            color: var(--text-main);
+            line-height: 1.3;
+            margin-bottom: 8px;
         }
 
-        /* 메뉴 보기 입장 버튼 */
-        .enter-btn {
-            background: transparent;
-            border: 1px solid var(--accent-gold);
-            color: var(--text-white);
-            padding: 12px 30px;
+        .hbd-couple-sub {
             font-size: 11pt;
+            color: var(--accent-rose);
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .hbd-welcome-text {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 10pt;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .view-menu-btn {
+            background-color: var(--text-main);
+            color: #ffffff;
+            border: none;
+            padding: 14px 36px;
+            font-size: 10.5pt;
             letter-spacing: 2px;
+            border-radius: 30px;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(58, 53, 48, 0.15);
             transition: all 0.3s ease;
             font-family: 'Noto Serif KR', serif;
+            width: 80%;
         }
 
-        .enter-btn:hover {
-            background-color: var(--accent-gold);
-            color: #000;
+        .view-menu-btn:active {
+            transform: scale(0.98);
+            background-color: #262320;
         }
 
-        /* 2. 메인 컨텐츠: 파인다이닝 코스 메뉴판 */
-        .main-wrapper {
-            max-width: 540px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* 2. 메인 화면: 모바일 최적화 프렌치 코스판 */
+        .main-menu-wrapper {
+            width: 100%;
+            max-width: 450px; /* 전형적인 스마트폰 최적화 너비 */
+            padding: 24px 16px 40px 16px;
+            display: none; /* 인트로 종료 전까지 숨김 */
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+            transform: translateY(15px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
         }
 
-        /* 오버레이가 사라진 후 메인 화면을 보여주는 클래스 */
         .show-content {
+            display: block;
             opacity: 1;
             transform: translateY(0);
         }
 
-        .menu-card {
-            background-color: var(--container-bg);
-            border: 1px solid var(--accent-gold);
-            padding: 20px;
-            position: relative;
-        }
-
-        .menu-inner {
-            border: 2px solid var(--accent-gold);
-            padding: 40px 15px;
+        .french-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid #eaddca;
+            box-shadow: 0 12px 40px rgba(195, 162, 117, 0.05);
+            padding: 45px 24px;
             text-align: center;
         }
 
-        /* 메인 상단 비주얼 영역 (깃허브 배포 시 이미지 경로 지정 가능) */
-        .menu-hero-img {
-            width: 100%;
-            height: 220px;
-            background-color: #222;
-            margin-bottom: 35px;
-            border: 1px solid #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 10pt;
-            color: var(--text-dark);
-            letter-spacing: 1px;
-            background-size: cover;
-            background-position: center;
-            /* 깃허브 업로드 후 아래 주석을 풀고 실제 이미지 파일명을 넣으시면 매칭됩니다. */
-            /* background-image: url('honyaki_main.jpg'); */
-        }
-
-        .menu-header-title {
-            font-size: 22pt;
+        .menu-top-title {
+            font-size: 20pt;
             letter-spacing: 4px;
-            color: var(--text-white);
-            margin-bottom: 5px;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            font-weight: 600;
         }
 
-        .menu-header-sub {
-            font-size: 11pt;
+        .menu-top-sub {
+            font-size: 10.5pt;
             color: var(--accent-gold);
             letter-spacing: 2px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             font-style: italic;
         }
 
-        .divider {
-            color: var(--accent-gold);
-            font-size: 8pt;
-            letter-spacing: 6px;
-            margin: 30px 0;
+        .line-divider {
+            width: 35px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            margin: 30px auto;
         }
 
-        /* 코스 섹션 레이아웃 */
-        .course-section {
-            margin-bottom: 40px;
+        /* 코스 리스트 디자인 */
+        .course-node {
+            margin-bottom: 35px;
         }
 
-        .section-tag {
-            font-size: 10pt;
-            color: var(--accent-gold);
+        .course-stage {
+            font-size: 8.5pt;
+            color: var(--accent-rose);
             letter-spacing: 3px;
-            margin-bottom: 18px;
-            font-weight: 500;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
-        .dish-item {
-            margin-bottom: 25px;
-        }
-
-        .dish-name {
+        .dish-title {
             font-size: 13pt;
-            font-weight: 700;
-            color: var(--text-white);
+            font-weight: 600;
+            color: var(--text-main);
             margin-bottom: 6px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        .dish-desc {
-            font-size: 9.5pt;
-            color: var(--text-dark);
-            line-height: 1.6;
-            max-width: 400px;
-            margin: 0 auto 10px auto;
+        .dish-explanation {
             font-family: 'Noto Serif KR', serif;
+            font-size: 9.5pt;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 320px;
+            margin: 0 auto;
             font-weight: 300;
         }
 
-        /* 인라인 이미지 스팟 (메뉴 중간중간 미니 사진 들어갈 공간) */
-        .dish-thumb {
-            width: 80px;
-            height: 80px;
-            background-color: #222;
-            margin: 8px auto 0 auto;
-            border-radius: 50%;
-            border: 1px solid var(--accent-muted);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 7pt;
-            color: #555;
-            background-size: cover;
-            background-position: center;
-            /* background-image: url('menu_thumb1.jpg'); */
+        /* 축하 문구 및 푸터 */
+        .celebration-footer {
+            margin-top: 40px;
+            font-family: 'Noto Serif KR', serif;
         }
 
-        /* 하단 푸터 */
-        .menu-footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            font-size: 9pt;
-            color: var(--accent-muted);
+        .footer-warm-msg {
+            font-size: 9.5pt;
+            color: var(--text-main);
             line-height: 1.8;
-            letter-spacing: 1px;
+            font-weight: 400;
+            margin-bottom: 15px;
         }
 
-        .footer-logo {
-            font-size: 12pt;
-            font-weight: 700;
+        .footer-date-info {
+            font-size: 8.5pt;
             color: var(--accent-gold);
-            margin-bottom: 8px;
-            letter-spacing: 3px;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. 생일 축하 인트로 화면 -->
+    <!-- 1. 생일 축하 인트로 화면 (아이보리 화사한 톤) -->
     <div id="birthday-overlay">
-        <div class="overlay-border">
-            <div class="lantern-anim">🏮</div>
-            <h1 class="hbd-title">HAPPY<br>BIRTHDAY</h1>
-            <div class="hbd-subtitle">To Our Special Guest</div>
-            <p style="font-size: 10pt; color: var(--text-dark); line-height: 1.6; margin-bottom: 35px; font-family: 'Noto Serif KR', serif;">
-                오늘 단 한 사람만을 위해 준비된<br>혼야키 프리미엄 생일 오마카세 코스입니다.
+        <div class="overlay-card">
+            <span class="celebration-icon">✨</span>
+            <h1 class="hbd-main-title">HAPPY<br>BIRTHDAY</h1>
+            <div class="hbd-couple-sub">Celebrating Your Special Day</div>
+            
+            <p class="hbd-welcome-text">
+                두 분의 소중한 날을 기념하여<br>
+                정성스레 기획한 프렌치 테이블입니다.<br>
+                오늘 행복하고 따뜻한 시간 되세요!
             </p>
-            <button class="enter-btn" onclick="revealMenu()">오늘의 코스 메뉴 보기</button>
+            
+            <button class="view-menu-btn" onclick="revealFrenchMenu()">오늘의 코스 보기</button>
         </div>
     </div>
 
-    <!-- 2. 메인 파인다이닝 코스판 화면 -->
-    <div class="main-wrapper" id="main-content">
-        <div class="menu-card">
-            <div class="menu-inner">
-                
-                <!-- 상단 대표 이미지 (GitHub 업로드용 플레이스홀더) -->
-                <div class="menu-hero-img">
-                    [ 여기 매장이나 시그니처 구이 사진 배치 ]
-                </div>
+    <!-- 2. 메인 화면: 완전 이미지 배제형 프렌치 코스판 -->
+    <div class="main-menu-wrapper" id="main-content">
+        <div class="french-card">
+            
+            <h2 class="menu-top-title">THE MENU</h2>
+            <div class="menu-top-sub">Private Birthday Dinner</div>
 
-                <h2 class="menu-header-title">BIRTHDAY COURSE</h2>
-                <div class="menu-header-sub">Special Culinary Journey</div>
+            <div class="line-divider"></div>
 
-                <div class="divider">◆   ◆   ◆</div>
+            <!-- ======================================================================= -->
+            <!-- 여기서부터 아래 요리명과 설명을 자유롭게 한글로 채워넣으시면 됩니다! -->
+            <!-- ======================================================================= -->
 
-                <!-- 코스 리스트 -->
-                <div class="course-section">
-                    <div class="section-tag">I. 전채 (先付)</div>
-                    <div class="dish-item">
-                        <div class="dish-name">모찌리도후 & 에다마메</div>
-                        <div class="dish-desc">쫀득하고 고소한 수제 치즈 두부와 은은하게 구워낸 풋콩</div>
-                    </div>
-                    <div class="dish-item">
-                        <div class="dish-name">타코와사비 레몬 샐러드</div>
-                        <div class="dish-desc">알싸한 와사비 타코와 싱그러운 레몬 드레싱을 곁들인 샐러드</div>
-                        <div class="dish-thumb">[ 사진 ]</div>
-                    </div>
-                </div>
-
-                <div class="course-section">
-                    <div class="section-tag">II. 야키토리 (焼き鳥)</div>
-                    <div class="dish-item">
-                        <div class="dish-name">최고급 비장탄 꼬치 5종 수선</div>
-                        <div class="dish-desc">닭다리살 대파(네기마), 부드러운 안심, 고소한 염통 등 참숯에서 즉시 구워내 육즙을 가둔 혼야키 시그니처 꼬치</div>
-                        <div class="dish-thumb">[ 사진 ]</div>
-                    </div>
-                    <div class="dish-item">
-                        <div class="dish-name">특제 소스 츠쿠네</div>
-                        <div class="dish-desc">다진 닭고기 경당 구이와 신선한 노른자를 곁들인 깊은 풍미의 요리</div>
-                    </div>
-                </div>
-
-                <div class="course-section">
-                    <div class="section-tag">III. 일품 (逸品)</div>
-                    <div class="dish-item">
-                        <div class="dish-name">수제 치킨 가라아게 & 가쓰오 타코야키</div>
-                        <div class="dish-desc">겉은 바삭하고 속은 촉촉한 닭튀김과 풍성한 가쓰오부시를 올린 타코야키</div>
-                    </div>
-                </div>
-
-                <div class="course-section">
-                    <div class="section-tag">IV. 나베 (鍋)</div>
-                    <div class="dish-item">
-                        <div class="dish-name">나가사키 짬뽕 나베</div>
-                        <div class="dish-desc">진한 사골 육수에 신선한 해산물과 아삭한 숙주를 더해 끓여낸 깊은 맛의 탕 요리</div>
-                    </div>
-                </div>
-
-                <div class="course-section">
-                    <div class="section-tag">V. 디저트 (甘味)</div>
-                    <div class="dish-item">
-                        <div class="dish-name">유자 샤베트 & 미니 케이크 플레이트</div>
-                        <div class="dish-desc">입안을 상큼하게 마무리해 줄 디저트</div>
-                    </div>
-                </div>
-
-                <div class="divider">◆   ◆   ◆</div>
-
-                <div class="menu-footer">
-                    <div class="footer-logo">本焼き : HON-YAKI</div>
-                    <p>오늘, 당신의 가장 특별한 날을 함께하여 기쁩니다.</p>
-                    <p>기쁜 날, 소중한 분과의 행복한 시간 되세요.</p>
-                </div>
-
+            <!-- 코스 1 -->
+            <div class="course-node">
+                <div class="course-stage">Amuse-Bouche</div>
+                <div class="dish-title">식전 전채 요리</div> 
+                <div class="dish-explanation">입맛을 돋우기 위해 가볍게 준비한 한 입 거리 전채 요리</div> 
             </div>
+
+            <!-- 코스 2 -->
+            <div class="course-node">
+                <div class="course-stage">Entrée</div>
+                <div class="dish-title">에피타이저 요리</div> 
+                <div class="dish-explanation">신선한 식재료의 다채로운 풍미를 조화롭게 담아낸 첫 요리</div> 
+            </div>
+
+            <!-- 코스 3 -->
+            <div class="course-node">
+                <div class="course-stage">Plat Principal</div>
+                <div class="dish-title">메인 디쉬 요리</div> 
+                <div class="dish-explanation">부드럽고 깊은 맛을 내는 오늘 저녁의 메인 요리</div> 
+            </div>
+
+            <!-- 코스 4 -->
+            <div class="course-node">
+                <div class="course-stage">Dessert</div>
+                <div class="dish-title">달콤한 디저트</div> 
+                <div class="dish-explanation">식사의 마지막을 기분 좋게 장식해 줄 수제 디저트</div> 
+            </div>
+
+            <!-- ======================================================================= -->
+            <!-- 메뉴 코스 수정 끝 -->
+            <!-- ======================================================================= -->
+
+            <div class="line-divider"></div>
+
+            <!-- 푸터 축하 메시지 -->
+            <div class="celebration-footer">
+                <p class="footer-warm-msg">
+                    함께하는 오늘이 최고의 추억이 되기를 바랍니다.<br>
+                    생일을 진심으로 축하합니다!
+                </p>
+                <div class="footer-date-info">With Love & Celebration</div>
+            </div>
+
         </div>
     </div>
 
-    <!-- 화면 전환 스크립트 -->
+    <!-- 터치 반응 전환 스크립트 -->
     <script>
-        function revealMenu() {
+        function revealFrenchMenu() {
             const overlay = document.getElementById('birthday-overlay');
             const content = document.getElementById('main-content');
             
-            // 인트로 오버레이 투명화 및 위로 슬라이드 서서히 아웃
-            overlay.style.opacity = '0';
-            overlay.style.transform = 'translateY(-50px)';
+            // 모바일 렌더링 딜레이를 없애기 위해 디스플레이 활성화 후 페이드아웃 적용
+            content.style.display = 'block';
             
-            // 일정 시간 후 레이어 완벽히 제거 및 메인 콘텐츠 서서히 노출
+            overlay.style.opacity = '0';
+            overlay.style.transform = 'scale(0.96)';
+            
             setTimeout(() => {
                 overlay.style.display = 'none';
                 content.classList.add('show-content');
-            }, 800);
+            }, 600);
         }
     </script>
 </body>
