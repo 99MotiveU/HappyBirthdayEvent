@@ -6,27 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday - Private Dinner Table</title>
     
-    <!-- 세련된 다이닝 무드를 위한 구글 프리미엄 웹 폰트 내장 -->
+    <!-- 구글 프리미엄 웹 폰트 내장 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* 화사하고 따뜻한 파스텔 크림 & 소프트 로즈 골드 테마 */
         :root {
-            --bg-color: #fdfbf7;         /* 따뜻한 아이보리 크림 빛 배경 */
-            --card-bg: #ffffff;         /* 순백색 컨텐츠 카드 */
-            --accent-gold: #c3a275;     /* 은은한 샴페인 골드 */
-            --accent-rose: #d4a396;     /* 로맨틱한 소프트 로즈 */
-            --text-main: #3a3530;       /* 부드럽고 가독성 높은 웜 브라운 */
-            --text-muted: #8c8275;      /* 감성적인 브라운 그레이 */
+            --bg-color: #fdfbf7;        
+            --card-bg: #ffffff;    
+            --accent-gold: #c3a275;    
+            --accent-rose: #d4a396;     
+            --text-main: #3a3530;      
+            --text-muted: #8c8275;     
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: transparent; /* 모바일 터치 잔상 제거 */
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -40,7 +39,6 @@
             overflow-x: hidden;
         }
 
-        /* 1. 첫 화면: 전체 화면 생일 축하 오버레이 (밝은 무드) */
         #birthday-overlay {
             position: fixed;
             top: 0;
@@ -125,12 +123,11 @@
             background-color: #262320;
         }
 
-        /* 2. 메인 화면: 모바일 최적화 프렌치 코스판 */
         .main-menu-wrapper {
             width: 100%;
-            max-width: 450px; /* 전형적인 스마트폰 최적화 너비 */
+            max-width: 450px; 
             padding: 24px 16px 40px 16px;
-            display: none; /* 인트로 종료 전까지 숨김 */
+            display: none;
             opacity: 0;
             transform: translateY(15px);
             transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
@@ -174,7 +171,6 @@
             margin: 30px auto;
         }
 
-        /* 코스 리스트 디자인 */
         .course-node {
             margin-bottom: 35px;
         }
@@ -206,7 +202,6 @@
             font-weight: 300;
         }
 
-        /* 축하 문구 및 푸터 */
         .celebration-footer {
             margin-top: 40px;
             font-family: 'Noto Serif KR', serif;
@@ -229,7 +224,7 @@
 </head>
 <body>
 
-    <!-- 1. 생일 축하 인트로 화면 (아이보리 화사한 톤) -->
+    <!-- 1. 생일 축하 인트로 화면-->
     <div id="birthday-overlay">
         <div class="overlay-card">
             <span class="celebration-icon">✨</span>
@@ -237,7 +232,7 @@
             <div class="hbd-couple-sub">Celebrating Your Special Day</div>
             
             <p class="hbd-welcome-text">
-                두 분의 소중한 날을 기념하여<br>
+                소중한 날을 기념하여<br>
                 정성스레 기획한 프렌치 테이블입니다.<br>
                 오늘 행복하고 따뜻한 시간 되세요!
             </p>
@@ -246,7 +241,7 @@
         </div>
     </div>
 
-    <!-- 2. 메인 화면: 완전 이미지 배제형 프렌치 코스판 -->
+    <!-- 2. 메인 화면 -->
     <div class="main-menu-wrapper" id="main-content">
         <div class="french-card">
             
@@ -256,7 +251,7 @@
             <div class="line-divider"></div>
 
             <!-- ======================================================================= -->
-            <!-- 여기서부터 아래 요리명과 설명을 자유롭게 한글로 채워넣으시면 됩니다! -->
+            <!-- 여기서부터 아래 요리명과 설명 -->
             <!-- ======================================================================= -->
 
             <!-- 코스 1 -->
@@ -311,7 +306,6 @@
             const overlay = document.getElementById('birthday-overlay');
             const content = document.getElementById('main-content');
             
-            // 모바일 렌더링 딜레이를 없애기 위해 디스플레이 활성화 후 페이드아웃 적용
             content.style.display = 'block';
             
             overlay.style.opacity = '0';
